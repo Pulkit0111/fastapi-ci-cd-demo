@@ -1,0 +1,25 @@
+[project]
+name = "learn-uv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.115.12",
+    "sqlalchemy",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "ruff>=0.11.2",
+]
+
+[tool.ruff]
+line-length = 88
+lint.select = ["E", "F", "I"]
+lint.fixable = ["ALL"]
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
