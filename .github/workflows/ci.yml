@@ -26,15 +26,18 @@ jobs:
             - name: Install uv
               run: |
                 curl -fsSL https://get.uv.dev | sh
+                echo "$HOME/.uv/bin" >> $GITHUB_PATH
 
             - name: Install dependencies
-              run: uv sync
+              run: |
+                $HOME/.uv/bin/uv pip install --system ruff black
+                $HOME/.uv/bin/uv sync
 
             - name: Run linting
-              run: uv run ruff check .
+              run: ruff check .
 
             - name: Run formatting
-              run: uv run black .
+              run: black .
             
             
         
