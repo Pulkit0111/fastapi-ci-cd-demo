@@ -25,13 +25,12 @@ jobs:
 
             - name: Install uv
               run: |
-                curl -fsSL https://get.uv.dev | sh
-                echo "$HOME/.uv/bin" >> $GITHUB_PATH
+                curl -LsSf https://astral.sh/uv/install.sh | sh
+                echo "${CARGO_HOME:-$HOME/.cargo}/bin" >> $GITHUB_PATH
 
             - name: Install dependencies
               run: |
-                $HOME/.uv/bin/uv pip install --system ruff black
-                $HOME/.uv/bin/uv sync
+                uv pip install --system ruff black
 
             - name: Run linting
               run: ruff check .
